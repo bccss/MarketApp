@@ -7,7 +7,8 @@ import TwoColumnGrid from '@/components/ui/TwoColumnGrid';
 import { colors, spacing } from '@/constants/tokens';
 import { fetchCategories, fetchServices } from '@/hooks/useMarketData';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomePage() {
   const [services, setServices] = useState<any[]>([]);
@@ -32,8 +33,11 @@ export default function HomePage() {
   const handleTabChange = (tab: string) => console.log(`Tab changed to ${tab}`);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right']}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={Platform.OS === 'android' ? colors.surfaceContainerLow : undefined}
+      />
       <TopBar
         logoText="HEIGHTS EXCHANGE"
         onMenuPress={handleMenuPress}

@@ -20,7 +20,7 @@ export default function TwoColumnGrid({ items, renderItem }: TwoColumnGridProps)
                     </View>
                 ))}
             </View>
-            <View style={[styles.column, styles.rightColumn]}>
+            <View style={styles.column}>
                 {right.map((item, index) => (
                     <View key={item.id || index}>
                         {renderItem(item)}
@@ -38,8 +38,5 @@ const styles = StyleSheet.create({
     },
     column: {
         flex: 1,
-    },
-    rightColumn: {
-        marginTop: spacing[8], // Staggered effect
     },
 });

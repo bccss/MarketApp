@@ -1,7 +1,8 @@
 import { colors, fontFamilies, spacing } from '@/constants/tokens';
 import { Menu, ShoppingBag } from 'lucide-react-native';
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface TopBarProps {
     logoText: string;
@@ -17,7 +18,7 @@ export default function TopBar({
     cartCount = 0,
 }: TopBarProps) {
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={styles.safeArea} edges={['top']}>
             <View style={styles.container}>
                 <TouchableOpacity onPress={onMenuPress} style={styles.iconButton}>
                     <Menu size={24} color={colors.onSurface} strokeWidth={1.5} />
